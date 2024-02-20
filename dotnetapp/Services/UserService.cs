@@ -84,14 +84,15 @@ public async Task<string> LoginAsync(string email, string password)
 Console.WriteLine("iddd "+id.UserId);
         Console.WriteLine("User: " + user?.Email); // Debug output
         Console.WriteLine("Password: " + password); // Debug output
- 
+         
         if (user == null || !(await _signInManager.CheckPasswordSignInAsync(user, password, false)).Succeeded)
         {
             Console.WriteLine("service");
             Console.WriteLine("Invalid username or password"); // Debug output
             return null; // Invalid username or password
         }
- 
+       var customer= _context.Customers.Find(UserId);
+
         // Generate a JWT token
         var token = GenerateJwtToken(user, id.UserId);
         Console.WriteLine("Token: " + token); // Debug output
