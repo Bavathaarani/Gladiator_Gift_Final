@@ -156,9 +156,9 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/api/login`, loginData)
       .pipe(
         tap(response => {
-          console.log(response.token);
-          localStorage.setItem('token',response.token)
-          const decodedToken = this.decodeToken(response.token);
+          console.log(response.token.token);
+          localStorage.setItem('token',response.token.token)
+          const decodedToken = this.decodeToken(response.token.token);
  
           if (decodedToken) {
             localStorage.setItem('userId', decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']);
