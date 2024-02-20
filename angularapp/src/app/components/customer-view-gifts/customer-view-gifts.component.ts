@@ -62,8 +62,8 @@ export class CustomerViewGiftsComponent implements OnInit {
 
     this.customerService.registerCustomer(newCustomer).subscribe(
       (response) => {
-        console.log("response-",response);
-        localStorage.setItem('customerId', response.registeredCustomer.customerId);
+        console.log(response, "customeriddythytr")
+        localStorage.setItem('customerId', response.registeredCustomer.$id);
         localStorage.setItem('cartId', response.cartId);
         this.customerId = localStorage.getItem('customerId');
         console.log(this.customerId, "csutomerid.....");
