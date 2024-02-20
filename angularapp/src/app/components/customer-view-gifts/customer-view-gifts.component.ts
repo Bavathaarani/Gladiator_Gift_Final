@@ -165,7 +165,7 @@ return false
 
     let cart = {
       cartId: cartId,
-      customer: { customerId: Number(localStorage.getItem('customerId')) },
+      customerId:localStorage.getItem('customerId'),
       // customer: this.customers,
       gifts: [this.gift],
       totalAmount: this.totalAmount,
