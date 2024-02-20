@@ -65,14 +65,17 @@ export class MyCartComponent implements OnInit {
       giftData.quantity--;
     }
   }
-  
   incrementQuantity(giftData: any) {
-    // Check if the current quantity is less than the available quantity
-    if (giftData.quantity < giftData.availableQuantity) {
-      // Increment the quantity
-      giftData.quantity++;
+    // Get the current value of userquantity input
+    const userQuantityInput = document.getElementById('userquantity') as HTMLInputElement;
+    const userQuantity = parseInt(userQuantityInput.value);
+
+    // Check if the current value exceeds giftData.quantity
+    if (userQuantity < giftData.quantity) {
+        // Increment the value of userquantity input
+        userQuantityInput.value = (userQuantity + 1).toString();
     }
-  }
+}
   // initializeQuantity() {
   //   this.gifts.forEach(giftData => {
   //     giftData.quantity = 1;
