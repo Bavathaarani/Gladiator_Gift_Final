@@ -18,6 +18,7 @@ export class CustomerService {
       'Authorization': `Bearer ${token}` // Assuming your token is a bearer token, replace it accordingly
     });
     console.log(customer);
+
     return this.http.post(`${this.apiUrl}/api/customer`,customer,{headers});
   }
 

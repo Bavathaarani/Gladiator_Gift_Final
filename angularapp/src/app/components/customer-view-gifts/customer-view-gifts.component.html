@@ -1,6 +1,6 @@
 <app-customerdashboard></app-customerdashboard>
 
-<div *ngIf="!hasCustomerId(); else giftsList">
+<div *ngIf="!hasCustomerId()">
     <div class="modal-content">
         <form (ngSubmit)="onSubmit()">
             <h2>Fill Your Details</h2>
@@ -25,8 +25,8 @@
           
     </div>
 </div>
-
-<ng-template #giftsList>
+<div *ngIf="!hasCustomerId()">
+<!-- <ng-template #giftsList> -->
     <div class="gifts-container">
         <div class="gift" *ngFor="let gift of gifts">
             <img [src]="gift.giftImageUrl" alt="{{gift.giftType}}">
@@ -37,5 +37,6 @@
             <button (click)="goToCart(gift)" [disabled]="gift.addedToCart">Add to Cart</button>
         </div>
     </div>
-</ng-template>
+<!-- </ng-template> -->
+</div>
 <div *ngIf="showPopup" class="popup">{{ popupMessage }}</div>

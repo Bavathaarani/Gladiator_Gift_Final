@@ -35,7 +35,6 @@ export class CustomerViewGiftsComponent implements OnInit {
     console.log(this.customerId);
   }
 
-
   hasCustomerId(): boolean {
     return localStorage.getItem('customerId') === null;
   }
@@ -57,19 +56,18 @@ export class CustomerViewGiftsComponent implements OnInit {
       customerName: this.name,
       address: this.address,
       //             // userId: Number(localStorage.getItem('userId')),
-        user: { id: localStorage.getItem('userId') } as User,
+      user: { id: localStorage.getItem('userId') } as User,
     };
-    const userId = Number(localStorage.getItem('userId'));
+    // const userId = Number(localStorage.getItem('userId'));
 
     this.customerService.registerCustomer(newCustomer).subscribe(
       (response) => {
         console.log("response-",response);
-
-
-
         localStorage.setItem('customerId', response.registeredCustomer.customerId);
         localStorage.setItem('cartId', response.cartId);
-        const customerId = localStorage.getItem("customerId")
+        this.customerId = localStorage.getItem('customerId');
+        console.log(this.customerId, "csutomerid.....");
+        // const customerId = localStorage.getItem("customerId")
         console.log(this.customerId);
         const cardId = localStorage.getItem("cartId")
         console.log(cardId)
