@@ -135,6 +135,7 @@ namespace dotnetapp.Services
         }
 
         var customer = await _context.Customers.FirstOrDefaultAsync(c => c.UserId == id.UserId);
+        var customer = await _context.Customers.FirstOrDefaultAsync(c => c.UserId == id.UserId);
 
         Console.WriteLine(customer?.CustomerId + "customer-------------------------------------");
 
