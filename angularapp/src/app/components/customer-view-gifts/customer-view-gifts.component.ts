@@ -19,7 +19,7 @@ export class CustomerViewGiftsComponent implements OnInit {
   user: User;
   totalAmount: number;
   customer: Customer;
-  formSubmitted: boolean = false;
+  formSubmitted = false;
   customerId = localStorage.getItem('customerId');
   customerIdRegistered: boolean = false;
   addedToCart = false;
@@ -51,8 +51,8 @@ export class CustomerViewGiftsComponent implements OnInit {
 
 
   onSubmit(): void {
-    const newCustomer = {
-
+    const newCustomer: Customer = {
+      customerId: null,
       customerName: this.name,
       address: this.address,
       //             // userId: Number(localStorage.getItem('userId')),
@@ -60,10 +60,10 @@ export class CustomerViewGiftsComponent implements OnInit {
     };
     // const userId = Number(localStorage.getItem('userId'));
 
-    this.customerService.registerCustomer(newCustomer).subscribe(
+    this.customerService.registerCustomer(this.customer).subscribe(
       (response) => {
         console.log(response, "customeriddythytr")
-        localStorage.setItem('customerId', response.registeredCustomer.$id);
+        localStorage.setItem('customerId', response.customerId.$id);
         localStorage.setItem('cartId', response.cartId);
         this.customerId = localStorage.getItem('customerId');
         console.log(this.customerId, "csutomerid.....");
@@ -73,6 +73,7 @@ export class CustomerViewGiftsComponent implements OnInit {
         console.log(cardId)
         // this.viewAllGifts();
         this.formSubmitted = true;
+        this.customerIdRegistered = true;
       },
       (error) => {
         console.error(error);
