@@ -2,6 +2,7 @@
   import { OrderService } from 'src/app/services/order.service';
   import { CustomerService } from 'src/app/services/customer.service';
   import { GiftService } from 'src/app/services/gift.service';
+  import { Router } from '@angular/router';
 
   @Component({
     selector: 'app-my-orders',
@@ -11,8 +12,8 @@
   export class MyOrdersComponent implements OnInit {
     orders = [];
     customers = {};
-
-    constructor(private orderService: OrderService, private customerService: CustomerService, private giftService:GiftService) { }
+    disableAddReview = true;
+    constructor(private orderService: OrderService, private customerService: CustomerService, private giftService:GiftService, private router: Router) { }
 
     ngOnInit(): void {
       this.viewOrderByUserId();
@@ -42,6 +43,7 @@
               console.error('order.gifts.$values is not defined:', order.gifts);
             }
           });
+          this.disableAddReview = this.orders.length === 0;
         },
         error => {
           console.error(error);
@@ -59,5 +61,11 @@
           console.error(error);
         }
       );
+    }
+    navigateToAddReview(): void {
+      if (!this.disableAddReview) {
+        // Only navigate if Add Review is not disabled
+        this.router.navigate(['/add-review']);
+      }
     }
   }

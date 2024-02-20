@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-customerdashboard',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class CustomerdashboardComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private orderService: OrderService) { }
 
   ngOnInit(): void {
   }
@@ -17,8 +18,17 @@ export class CustomerdashboardComponent implements OnInit {
     // For now, let's navigate to the login page
     this.router.navigate(['/login']);
   }
-  isActive(route: string): boolean {
+  async isActive(route: string): Promise<boolean> {
     return this.router.isActive(route, true);
   }
 
+  async isOrdersExist(): Promise<boolean> {
+    try {
+      const orders = await this.orderService.viewOrderByUserId().toPromise();
+      return orders && orders.$values && orders.$values.length > 0;
+    } catch (error) {
+      console.error('Error checking orders:', error);
+      return false;
+    }
+  }
 }

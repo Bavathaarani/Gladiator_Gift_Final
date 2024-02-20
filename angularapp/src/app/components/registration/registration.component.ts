@@ -45,7 +45,7 @@ export class RegistrationComponent implements OnInit {
     this.authService.register(this.username, this.password, this.role, this.email, this.mobileNumber).subscribe(
       (user) => {
         console.log(user);
-        // this.router.navigate(['/login']);
+        this.router.navigate(['/login']);
       },
       (error) => {
         console.log(error);
