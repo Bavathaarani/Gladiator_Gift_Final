@@ -1,6 +1,6 @@
 <app-dashboard></app-dashboard>
 
-<div class="gifts-container">
+<div class="gifts-container"  *ngIf="gifts.length; else noGifts" >
     <div *ngFor="let gift of gifts" class="gift-card">
       <h2>{{ gift.giftType }}</h2>
       <img [src]="gift.giftImageUrl" alt="{{ gift.giftType }}">
@@ -12,3 +12,7 @@
       <button (click)="deleteGift(gift)">Delete</button>
     </div>
   </div>
+
+  <ng-template #noGifts>
+    <div>No gifts available</div>
+  </ng-template>
