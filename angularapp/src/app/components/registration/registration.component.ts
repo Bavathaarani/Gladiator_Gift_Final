@@ -1,6 +1,8 @@
+// registration.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { FormBuilder, FormGroup,Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,16 +19,17 @@ export class RegistrationComponent implements OnInit {
   role: string = "";
   email: string = "";
   passwordMismatch: boolean = false; // New property to track password mismatch
-  registrationError: string = ""; 
-  constructor(private authService: AuthService, private router: Router,private fb: FormBuilder) {
+  registrationError: string | null = null; // New property to track registration errors
 
-  }
+  constructor(private authService: AuthService, private router: Router, private fb: FormBuilder) { }
+
   ngOnInit() {
-   this.registrationForm = this.fb.group({
-     mobileNumber: ['', [Validators.required,  Validators.pattern(/^[0-9]{10}$/)]],
-     email: ['', [Validators.required, Validators.email]],
-   });
- }
+    this.registrationForm = this.fb.group({
+      mobileNumber: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      email: ['', [Validators.required, Validators.email]],
+    });
+  }
+
   register(): void {
     if (this.password !== this.confirmPassword) {
       this.passwordMismatch = true;
@@ -39,27 +42,20 @@ export class RegistrationComponent implements OnInit {
       return; // Password complexity check failed
     }
 
-    this.authService.register(this.username, this.password, this.role, this.email,this.mobileNumber).subscribe(
+    this.authService.register(this.username, this.password, this.role, this.email, this.mobileNumber).subscribe(
       (user) => {
         console.log(user);
-
-          this.router.navigate(['/login']);
-  
+        // this.router.navigate(['/login']);
       },
       (error) => {
         console.log(error);
 
         // Handle registration error
-        if (error === 'Email is already taken. Please choose another email.') {
-          this.registrationError = 'Email is already taken. Please choose another email.';
-        } else if (error === 'Username is already taken. Please choose another username.') {
-          this.registrationError = 'Username is already taken. Please choose another username.';
-        } else {
-          this.registrationError = 'Registration failed. Please try again.';
-        }
+        this.registrationError = "Registration failed. Email or username may already exist.";
       }
     );
   }
+
   isPasswordComplex(password: string): boolean {
     const hasUppercase = /[A-Z]/.test(password);
     const hasLowercase = /[a-z]/.test(password);

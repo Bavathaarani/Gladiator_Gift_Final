@@ -143,10 +143,12 @@
               Email:<span class="asterisk">*</span>
               <input type="text" id="email" [(ngModel)]="email" name="email" [ngModelOptions]="{standalone: true}" required
                      #emailNgModel="ngModel">
+              <!-- Error message for the email -->
               <div *ngIf="emailNgModel.invalid && (emailNgModel.dirty || emailNgModel.touched)"
                    class="error-message" [hidden]="!emailNgModel.errors?.required">Email is required</div>
+              <!-- Display registrationError in red color -->
+              <div *ngIf="registrationError" class="error-message" style="color: red;">{{ registrationError }}</div>
             </label>
-            <div *ngIf="registrationError" class="error-message">{{ registrationError }}</div>
         
             <label for="password" class="input-label">
               Password:<span class="asterisk">*</span>
