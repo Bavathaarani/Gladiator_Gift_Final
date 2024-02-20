@@ -76,11 +76,11 @@ export class MyCartComponent implements OnInit {
         userQuantityInput.value = (userQuantity + 1).toString();
     }
 }
-  // initializeQuantity() {
-  //   this.gifts.forEach(giftData => {
-  //     giftData.quantity = 1;
-  //   });
-  // }
+  initializeQuantity() {
+    this.gifts.forEach(giftData => {
+      giftData.maxQuantity = 1;
+    });
+  }
 
 
   placeOrder() {
