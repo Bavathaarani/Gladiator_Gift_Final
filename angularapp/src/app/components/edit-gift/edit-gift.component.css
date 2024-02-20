@@ -1,70 +1,64 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    padding: 20px;
-}
-
-h2 {
-    text-align: center;
-    color: #333;
-}
-
-.error-message {
-    color: red;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
+/* Styles for the form container */
 form {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 500px;
+    max-width: 400px;
     margin: 0 auto;
-    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
+  }
+  
+  /* Styles for form groups */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Styles for labels */
+  label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-}
-
-.form-group input[type="text"],
-.form-group input[type="number"],
-.form-group textarea {
+  }
+  
+  /* Styles for text inputs and textareas */
+  input[type="text"],
+  input[type="number"],
+  textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-.error-message {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Styles for error messages */
+  .error-message {
     color: red;
-    margin-top: 5px;
-}
-
-.add-btn {
-    text-align: center;
-}
-
-.add-btn button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #5C6BC0;
+    font-size: 12px;
+    margin-top: 5px; /* Adjust margin to give space between input and error message */
+  }
+  
+  /* Styles for the Add Gift button */
+  .add-btn {
+    margin-top: 20px;
+  }
+  
+  button {
+    background-color: #007bff; /* Blue color */
     color: #fff;
-    border-radius: 4px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
-}
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
 
-.add-btn button:hover {
-    background-color: #3949AB;
-}
+  span{
+    color:red;
+  }
+
+  h2{
+    text-align: center;
+  }
