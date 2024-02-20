@@ -74,50 +74,88 @@ namespace dotnetapp.Services
         }
  
  
-public async Task<string> LoginAsync(string email, string password)
-        {
-             try
+// public async Task<string> LoginAsync(string email, string password)
+//         {
+//              try
+//     {
+//         var user = await _userManager.FindByEmailAsync(email);
+//         var id = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+//        Console.WriteLine("iddd "+id.UserId);
+//         Console.WriteLine("User: " + user?.Email); // Debug output
+//         Console.WriteLine("Password: " + password); // Debug output
+         
+//         if (user == null || !(await _signInManager.CheckPasswordSignInAsync(user, password, false)).Succeeded)
+//         {
+//             Console.WriteLine("service");
+//             Console.WriteLine("Invalid username or password"); // Debug output
+//             return null; // Invalid username or password
+//         }
+        
+//         var customer =  await _context.Customers.FirstOrDefaultAsync(c => c.UserId == 18);
+
+//         Console.WriteLine(customer?.CustomerId+"customer-------------------------------------");
+
+
+
+//         // Generate a JWT token
+//         var token = GenerateJwtToken(user, id.UserId);
+//         Console.WriteLine("Token: " + token); // Debug output
+//         let cid=null;
+//         if(customer?.CustomerId)
+//         {
+//             cid=customer.CustomerId;
+//         }
+ 
+//         return {"token":token,"CustomerId":cid}
+
+        
+//     }
+//             catch (Exception ex)
+//             {
+//                 Console.WriteLine("zxcvbnm" + ex.Message);
+//                 // Handle exceptions appropriately (e.g., logging)
+//                 return null; // Login failed
+//             }
+//         }
+ public async Task<object> LoginAsync(string email, string password)
+{
+    try
     {
         var user = await _userManager.FindByEmailAsync(email);
         var id = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
-       Console.WriteLine("iddd "+id.UserId);
+        Console.WriteLine("iddd " + id.UserId);
         Console.WriteLine("User: " + user?.Email); // Debug output
         Console.WriteLine("Password: " + password); // Debug output
-         
+
         if (user == null || !(await _signInManager.CheckPasswordSignInAsync(user, password, false)).Succeeded)
         {
             Console.WriteLine("service");
             Console.WriteLine("Invalid username or password"); // Debug output
             return null; // Invalid username or password
         }
-        
-        var customer =  await _context.Customers.FirstOrDefaultAsync(c => c.UserId == 18);
 
-        Console.WriteLine(customer?.CustomerId+"customer-------------------------------------");
+        var customer = await _context.Customers.FirstOrDefaultAsync(c => c.UserId == id.UserId);
 
-
+        Console.WriteLine(customer?.CustomerId + "customer-------------------------------------");
 
         // Generate a JWT token
         var token = GenerateJwtToken(user, id.UserId);
         Console.WriteLine("Token: " + token); // Debug output
-        let cid=null;
-        if(customer?.CustomerId)
-        {
-            cid=customer.CustomerId;
-        }
- 
-        return {"token":token,"CustomerId":cid}
-
         
+        // Conditionally assign customer ID
+        var cid = customer?.CustomerId != null ? customer.CustomerId.ToString() : null;
+
+        // Return token and customer ID as an anonymous object
+        return new { token, CustomerId = cid };
     }
-            catch (Exception ex)
-            {
-                Console.WriteLine("zxcvbnm" + ex.Message);
-                // Handle exceptions appropriately (e.g., logging)
-                return null; // Login failed
-            }
-        }
- 
+    catch (Exception ex)
+    {
+        Console.WriteLine("zxcvbnm" + ex.Message);
+        // Handle exceptions appropriately (e.g., logging)
+        return null; // Login failed
+    }
+}
+
     private string GenerateJwtToken(IdentityUser user, long id)
 {
     Console.WriteLine("User: " + user.Email);
