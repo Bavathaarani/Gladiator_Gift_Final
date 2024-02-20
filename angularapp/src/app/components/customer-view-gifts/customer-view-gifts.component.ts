@@ -52,28 +52,25 @@ export class CustomerViewGiftsComponent implements OnInit {
 
   onSubmit(): void {
     const newCustomer= {
-      customerId: null,
+
       customerName: this.name,
       address: this.address,
       //             // userId: Number(localStorage.getItem('userId')),
-      user: { id: localStorage.getItem('userId') } as User,
+      // user: { id: localStorage.getItem('userId') } as User,
     };
-    // const userId = Number(localStorage.getItem('userId'));
+    const userId = Number(localStorage.getItem('userId'));
 
     this.customerService.registerCustomer(newCustomer).subscribe(
       (response) => {
-        console.log(response, "customeriddythytr")
-        localStorage.setItem('customerId', response.customerId);
+        console.log(response, "customerId")
+        localStorage.setItem('customerId', response.registeredCustomer.customerId);
         localStorage.setItem('cartId', response.cartId);
-        this.customerId = localStorage.getItem('customerId');
-        console.log(this.customerId, "csutomerid.....");
-        // const customerId = localStorage.getItem("customerId")
-        console.log(this.customerId);
+        const customerId = localStorage.getItem("customerId");
+        console.log(customerId);
         const cardId = localStorage.getItem("cartId")
         console.log(cardId)
         // this.viewAllGifts();
         this.formSubmitted = true;
-        this.customerIdRegistered = true;
       },
       (error) => {
         console.error(error);
