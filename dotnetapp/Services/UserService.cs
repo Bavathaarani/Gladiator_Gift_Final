@@ -121,6 +121,7 @@ namespace dotnetapp.Services
 {
     try
     {
+        Console.WriteLine(email);
         var user = await _userManager.FindByEmailAsync(email);
         var id = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
         Console.WriteLine("iddd " + id.UserId);
