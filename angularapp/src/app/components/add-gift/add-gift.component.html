@@ -63,7 +63,7 @@
 <form [formGroup]="addGiftForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="giftType" style="position: relative;"> <!-- Add relative positioning to the label -->
-            Gift Type:
+            Gift Type:<span class="asterisk">*</span>
             <input type="text" id="giftType" formControlName="giftType">
             <div *ngIf="addGiftForm.get('giftType').hasError('required') && addGiftForm.get('giftType').touched" class="error-message">*</div> <!-- Display the asterisk conditionally -->
         </label>
@@ -78,7 +78,7 @@
     </div> -->
     <div class="form-group">
         <label for="giftImageUrl" style="position: relative;">
-            Gift Image:
+            Gift Image:<span class="asterisk">*</span>
             <input type="file" id="giftImageUrl" formControlName="giftImageUrl" (change)="handleFileChange($event)"
             accept=".png, .jpg">
             <div *ngIf="addGiftForm.get('giftImageUrl').hasError('required') && addGiftForm.get('giftImageUrl').touched" class="error-message">*</div> 
@@ -88,7 +88,7 @@
  
     <div class="form-group">
         <label for="giftDetails" style="position: relative;"> <!-- Add relative positioning to the label -->
-            Gift Details:
+            Gift Details:<span class="asterisk">*</span>
             <textarea id="giftDetails" formControlName="giftDetails"></textarea>
             <div *ngIf="addGiftForm.get('giftDetails').hasError('required') && addGiftForm.get('giftDetails').touched" class="error-message">*</div> <!-- Display the asterisk conditionally -->
         </label>
@@ -96,7 +96,7 @@
 
     <div class="form-group">
         <label for="quantity" style="position: relative;"> <!-- Add relative positioning to the label -->
-            Quantity:
+            Quantity:<span class="asterisk">*</span>
             <input type="number" id="quantity" formControlName="quantity">
             <div *ngIf="addGiftForm.get('quantity').hasError('required') && addGiftForm.get('quantity').touched" class="error-message">*</div> <!-- Display the asterisk conditionally -->
             <div *ngIf="addGiftForm.get('quantity').hasError('min') && addGiftForm.get('quantity').touched" class="error-message">*</div> <!-- Display the asterisk conditionally -->
@@ -105,7 +105,7 @@
  
     <div class="form-group">
         <label for="giftPrice" style="position: relative;"> <!-- Add relative positioning to the label -->
-            Price:
+            Price:<span class="asterisk">*</span>
             <input type="number" id="giftPrice" formControlName="giftPrice">
             <div *ngIf="addGiftForm.get('giftPrice').hasError('required') && addGiftForm.get('giftPrice').touched" class="error-message">*</div> <!-- Display the asterisk conditionally -->
             <div *ngIf="addGiftForm.get('giftPrice').hasError('min') && addGiftForm.get('giftPrice').touched" class="error-message">*</div> <!-- Display the asterisk conditionally -->

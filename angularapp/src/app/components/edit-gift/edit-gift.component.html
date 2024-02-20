@@ -67,7 +67,7 @@
 <form [formGroup]="editGiftForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="giftType" style="position: relative;"> <!-- Add relative positioning to the label -->
-      Gift Type:
+      Gift Type:<span class="asterisk">*</span>
       <input type="text" id="giftType" formControlName="giftType">
       <div *ngIf="editGiftForm.get('giftType').hasError('required') && editGiftForm.get('giftType').touched" class="error-message">*</div> <!-- Display the asterisk conditionally -->
     </label>
@@ -75,7 +75,7 @@
 
   <div class="form-group">
     <label for="giftImageUrl" style="position: relative;"> <!-- Add relative positioning to the label -->
-      Gift Image URL:
+      Gift Image:<span class="asterisk">*</span>
       <input type="file" id="giftImageUrl" formControlName="giftImageUrl" (change)="handleFileChange($event)"
             accept=".png, .jpg">
       <div *ngIf="editGiftForm.get('giftImageUrl').hasError('required') && editGiftForm.get('giftImageUrl').touched" class="error-message">*</div> <!-- Display the asterisk conditionally -->
