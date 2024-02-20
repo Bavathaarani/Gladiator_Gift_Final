@@ -61,14 +61,14 @@ export class PlaceOrderComponent implements OnInit {
   
     console.log(orderData);
   
-    this.orderService.addOrder(orderData).subscribe(
-      response => {
-        console.log("Order added successfully", response);
-      },
-      error => {
-        console.error("Error adding Order",error);
-      }
-    );
+    // this.orderService.addOrder(orderData).subscribe(
+    //   response => {
+    //     console.log("Order added successfully", response);
+    //   },
+    //   error => {
+    //     console.error("Error adding Order",error);
+    //   }
+    // );
     
   
       setTimeout(() => {
