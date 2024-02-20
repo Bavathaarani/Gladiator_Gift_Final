@@ -15,8 +15,9 @@ export class MyCartComponent implements OnInit {
   giftsCart: any;
   cartId = Number(localStorage.getItem('cartId'));
   userQuantity: number = 1;
+  
   constructor(private cartService: CartService, private router: Router) {}
-  // giftData: any;
+  
   // giftsCart = {};
   ngOnInit(): void {
     this.updateTotalAmount();
@@ -37,9 +38,9 @@ export class MyCartComponent implements OnInit {
             this.gifts = response.gifts;
           }
           this.totalAmount = response.totalAmount;
-          this.gifts.forEach(gift => {
-            gift.userQuantity = 1;
-          });
+          // this.gifts.forEach(gift => {
+          //   gift.userQuantity = 1;
+          // });
         } else {
           console.error('Invalid response format:', response);
         }
@@ -76,11 +77,11 @@ export class MyCartComponent implements OnInit {
 
 
   updateQuantity(giftData: any): void {
-    if (giftData.quantity > this.maxQuantity) {
-      giftData.quantity = this.maxQuantity;
+    if (giftData.quantity > giftData.userQuantity) {
+      giftData.quantity = giftData.userQuantity;
     }
     
-    giftData.totalAmount = this.maxQuantity * giftData.giftPrice; // Update the total amount for the specific gift
+    giftData.totalAmount = giftData.userQuantity * giftData.giftPrice; // Update the total amount for the specific gift
     
     const customerId = localStorage.getItem('customerId'); // Get the customerId from local storage
     
@@ -97,7 +98,7 @@ export class MyCartComponent implements OnInit {
     console.log('Total amount updated:', this.totalAmount);
   }
   updateTotalAmount(): void {
-    this.totalAmount = this.gifts.reduce((total, gift) => total + (gift.quantity * gift.giftPrice), 0);
+    this.totalAmount = this.gifts.reduce((total, gift) => total + (this.userQuantity * gift.giftPrice), 0);
     console.log('Total amount:', this.totalAmount);
   }
 
