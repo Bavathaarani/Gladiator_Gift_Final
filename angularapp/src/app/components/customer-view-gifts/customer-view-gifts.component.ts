@@ -37,18 +37,16 @@ export class CustomerViewGiftsComponent implements OnInit {
 
 
   hasCustomerId(): boolean {
-
-
-
-    // return localStorage.getItem('customerId') !== null;
-if( localStorage.getItem('customerId'))
-{
-  return true
-}
-return false
-
-
+    return localStorage.getItem('customerId') !== null;
   }
+// if( localStorage.getItem('customerId'))
+// {
+//   return true
+// }
+// return false
+
+
+//   }
 
 
 
