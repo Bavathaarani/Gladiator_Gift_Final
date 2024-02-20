@@ -127,9 +127,22 @@ button:hover {
   background-color: #0056b3; /* Set your desired button hover color */
 }
 
+.validation {
+  display: flex;
+  align-items: center;
+}
+
 .error-message {
-  color: #ff0000;
-  margin-top: 5px;
+  color: red;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.asterisk {
+  color: red;
+}
+span{
+  color:red;
 }
 
 .rating-buttons {
