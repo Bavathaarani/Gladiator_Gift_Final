@@ -51,8 +51,6 @@ export class MyCartComponent implements OnInit {
     //new
   }
   
-  
-
   calculateTotalAmount(): number {
     let totalAmount = 0;
     for (const gift of this.gifts) {
