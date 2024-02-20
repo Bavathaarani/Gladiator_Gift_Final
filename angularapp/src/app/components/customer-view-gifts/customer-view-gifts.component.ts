@@ -40,7 +40,7 @@ export class CustomerViewGiftsComponent implements OnInit {
   // }
 
   // console.log("localStorage.getItem('customerId')",localStorage.getItem('customerId')=="null",localStorage.getItem('customerId')==null)
-if(localStorage.getItem('customerId')=="null")
+if(localStorage.getItem('customerId')=="0")
 {
   
   return true
