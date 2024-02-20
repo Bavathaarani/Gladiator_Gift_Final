@@ -17,7 +17,7 @@ export class RegistrationComponent implements OnInit {
   role: string = "";
   email: string = "";
   passwordMismatch: boolean = false; // New property to track password mismatch
-
+  registrationError: string = ""; 
   constructor(private authService: AuthService, private router: Router,private fb: FormBuilder) {
 
   }
@@ -49,7 +49,14 @@ export class RegistrationComponent implements OnInit {
       (error) => {
         console.log(error);
 
-        // Handle registration error, display a message, etc.
+        // Handle registration error
+        if (error === 'Email is already taken. Please choose another email.') {
+          this.registrationError = 'Email is already taken. Please choose another email.';
+        } else if (error === 'Username is already taken. Please choose another username.') {
+          this.registrationError = 'Username is already taken. Please choose another username.';
+        } else {
+          this.registrationError = 'Registration failed. Please try again.';
+        }
       }
     );
   }

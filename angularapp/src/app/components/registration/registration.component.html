@@ -129,7 +129,7 @@
     <div class="main-container">
       <div class="container">
           <h1>Registration</h1>
-        
+
           <form (ngSubmit)="register()" #registrationForm="ngForm" novalidate>
             <label for="username" class="input-label">
               Username:<span class="asterisk">*</span>
@@ -146,6 +146,7 @@
               <div *ngIf="emailNgModel.invalid && (emailNgModel.dirty || emailNgModel.touched)"
                    class="error-message" [hidden]="!emailNgModel.errors?.required">Email is required</div>
             </label>
+            <div *ngIf="registrationError" class="error-message">{{ registrationError }}</div>
         
             <label for="password" class="input-label">
               Password:<span class="asterisk">*</span>
