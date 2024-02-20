@@ -43,11 +43,13 @@ export class PlaceOrderComponent implements OnInit {
       console.error('Invalid customer data');
       return;
     }
-  
+
+    
+   
     const orderData = {
       customerId: this.customerId,
       quantity: this.customerData.gifts.$values.length,
-      orderPrice: this.customerData.totalAmount,
+      orderPrice:this.totalAmount,
       gifts: this.customerData.gifts.$values.map(gift => ({
         // giftId: gift.giftId,
         giftType: gift.giftType,
