@@ -38,9 +38,9 @@ export class MyCartComponent implements OnInit {
             this.gifts = response.gifts;
           }
           this.totalAmount = response.totalAmount;
-          // this.gifts.forEach(gift => {
-          //   gift.userQuantity = 1;
-          // });
+          this.gifts.forEach(gift => {
+            gift.userQuantity = 1;
+          });
         } else {
           console.error('Invalid response format:', response);
         }
@@ -55,7 +55,7 @@ export class MyCartComponent implements OnInit {
   calculateTotalAmount(): number {
     let totalAmount = 0;
     for (const gift of this.gifts) {
-      totalAmount += this.userQuantity * gift.giftPrice;
+      totalAmount += gift.userQuantity * gift.giftPrice;
     }
     return totalAmount;
   }
