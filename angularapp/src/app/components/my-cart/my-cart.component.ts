@@ -13,6 +13,7 @@ export class MyCartComponent implements OnInit {
   gifts = [];
   totalAmount = 0;
   giftsCart: any;
+  
   cartId = Number(localStorage.getItem('cartId'));
   userQuantity: number = 1;
   
