@@ -37,9 +37,9 @@ export class MyCartComponent implements OnInit {
             this.gifts = response.gifts;
           }
           this.totalAmount = response.totalAmount;
-          // this.gifts.forEach(gift => {
-          //   gift.quantity = 1;
-          // });
+          this.gifts.forEach(gift => {
+            gift.userQuantity = 1;
+          });
         } else {
           console.error('Invalid response format:', response);
         }
