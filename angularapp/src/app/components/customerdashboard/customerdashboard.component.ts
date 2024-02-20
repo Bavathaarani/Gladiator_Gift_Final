@@ -18,17 +18,8 @@ export class CustomerdashboardComponent implements OnInit {
     // For now, let's navigate to the login page
     this.router.navigate(['/login']);
   }
-  async isActive(route: string): Promise<boolean> {
+  isActive(route: string): boolean {
     return this.router.isActive(route, true);
   }
 
-  async isOrdersExist(): Promise<boolean> {
-    try {
-      const orders = await this.orderService.viewOrderByUserId().toPromise();
-      return orders && orders.$values && orders.$values.length > 0;
-    } catch (error) {
-      console.error('Error checking orders:', error);
-      return false;
-    }
-  }
 }
