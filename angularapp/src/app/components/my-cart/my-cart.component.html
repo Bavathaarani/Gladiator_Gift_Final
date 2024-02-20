@@ -5,16 +5,11 @@
     <img [src]="giftData.giftImageUrl" alt="{{ giftData.giftType }}" />
     <p>{{ giftData.giftDetails }}</p>
     <p>Price: {{ giftData.giftPrice }}</p>
-    <p>
-      Available Quantity: {{ giftData.quantity }}
-    </p>
+    <p>Available Quantity : {{giftData.quantity}}</p>
     <p>
       Quantity:
-      <!-- <button style="margin-right: 10px;" (click)="decrementQuantity(giftData)">-</button> -->
-      <!-- Use inputmode="numeric" to enforce numeric keyboard on mobile devices -->
-      <!-- Use pattern="[0-9]*" to restrict input to numeric values only -->
-      <input type="number" id="userquantity" [min]="1" [max]="giftData.quantity">
-      <!-- <button style="margin-left: 10px;" (click)="incrementQuantity(giftData)">+</button> -->
+      <input type="number" class="userquantity" style="width: 50px;" [min]="1" [max]="giftData.quantity" [(ngModel)]="userQuantity" (ngModelChange)="validateQuantity(giftData)">
+      <span *ngIf="userQuantity > giftData.quantity" style="color: red;">Quantity exceeds available quantity!</span>
     </p>
     <button (click)="removeFromCart(giftData.giftId)" id="remove-btn" class="remove">Remove from Cart</button>
   </div>

@@ -14,7 +14,7 @@ export class MyCartComponent implements OnInit {
   totalAmount = 0;
   giftsCart: any;
   cartId = Number(localStorage.getItem('cartId'));
-
+  userQuantity: number = 1;
   constructor(private cartService: CartService, private router: Router) {}
   // giftData: any;
   // giftsCart = {};
@@ -60,27 +60,13 @@ export class MyCartComponent implements OnInit {
     }
     return totalAmount;
   }
-  decrementQuantity(giftData: any) {
-    if (giftData.quantity > 1) {
-      giftData.quantity--;
-    }
-  }
-  incrementQuantity(giftData: any) {
-    // Get the current value of userquantity input
-    const userQuantityInput = document.getElementById('userquantity') as HTMLInputElement;
-    const userQuantity = parseInt(userQuantityInput.value);
 
-    // Check if the current value exceeds giftData.quantity
-    if (userQuantity < giftData.quantity) {
-        // Increment the value of userquantity input
-        userQuantityInput.value = (userQuantity + 1).toString();
-    }
-}
-  initializeQuantity() {
-    this.gifts.forEach(giftData => {
-      giftData.maxQuantity = 1;
-    });
-  }
+  
+  // initializeQuantity() {
+  //   this.gifts.forEach(giftData => {
+  //     giftData.maxQuantity = 1;
+  //   });
+  // }
 
 
   placeOrder() {
