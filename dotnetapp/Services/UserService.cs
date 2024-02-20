@@ -135,19 +135,41 @@ namespace dotnetapp.Services
         }
 
         var customer = await _context.Customers.FirstOrDefaultAsync(c => c.UserId == id.UserId);
-        var customer = await _context.Customers.FirstOrDefaultAsync(c => c.UserId == id.UserId);
 
         Console.WriteLine(customer?.CustomerId + "customer-------------------------------------");
 
         // Generate a JWT token
-        var token = GenerateJwtToken(user, id.UserId);
-        Console.WriteLine("Token: " + token); // Debug output
+    //     var token = GenerateJwtToken(user, id.UserId);
+    //     Console.WriteLine("Token: " + token); // Debug output
         
-        // Conditionally assign customer ID
-        var cid = customer?.CustomerId != null ? customer.CustomerId.ToString() : null;
+    //     // Conditionally assign customer ID
+    //     var cid = customer?.CustomerId != null ? customer.CustomerId.ToString() : null;
+    //    int? cid2 = null; // Use nullable type for CartId
+    //     if(true)
+    //     {
+    //       var customer1 = await _context.Cart.FirstOrDefaultAsync(c => c.CustomerId == cid);
 
-        // Return token and customer ID as an anonymous object
-        return new { token, CustomerId = cid };
+    // cid2 = customer1?.CartId; // Assign CartId to cid2
+    //     }
+      
+
+    //     // Return token and customer ID as an anonymous object
+    //     return new { token, CustomerId = cid,CartId:cid2 };
+    var token = GenerateJwtToken(user, id.UserId);
+Console.WriteLine("Token: " + token); // Debug output
+
+// Conditionally assign customer ID
+var cid = customer?.CustomerId != null? customer.CustomerId : 0;
+long? cid2 = 0; // Use nullable type for CartId
+if (cid != null)
+{
+    var customer1 = await _context.Carts.FirstOrDefaultAsync(c => c.CustomerId == cid);
+    cid2 = customer1?.CartId; // Assign CartId to cid2
+}
+
+// Return token and customer ID as an anonymous object
+return new { token, CustomerId = cid, CartId = cid2 };
+
     }
     catch (Exception ex)
     {
