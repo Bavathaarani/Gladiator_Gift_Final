@@ -92,7 +92,7 @@ export class MyCartComponent implements OnInit {
         console.log(response); // Handle the response as per your requirement
       },
       error => {
-        console.error('Error:', error);
+        console.error('Error:', error); 
       }
     );
     this.updateTotalAmount();
