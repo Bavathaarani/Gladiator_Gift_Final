@@ -1,0 +1,43 @@
+/* AddReviewComponent CSS */
+.main-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  
+  .add-btn {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* DashboardComponent CSS */
+  .main-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .reviews-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .reviews-table th,
+  .reviews-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .reviews-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .no-reviews-message {
+    text-align: center;
+    margin-top: 20px;
+  }
+  

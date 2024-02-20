@@ -1,0 +1,19 @@
+<app-customerdashboard></app-customerdashboard>
+<div class="container">
+  <div *ngFor="let giftData of gifts">
+    <h2>{{ giftData.giftType }}</h2>
+    <img [src]="giftData.giftImageUrl" alt="{{ giftData.giftType }}" />
+    <p>{{ giftData.giftDetails }}</p>
+    <p>Price: {{ giftData.giftPrice }}</p>
+    <p>
+      Quantity: 
+      <button style="margin-right: 10px;" (click)="decrementQuantity(giftData)" [disabled]="giftData.quantity === 1">-</button>
+      <input type="text" [(ngModel)]="giftData.quantity" readonly pattern="[1-9]|10" />
+      <button style="margin-left: 10px;" (click)="incrementQuantity(giftData)">+</button>
+    </p>
+    <button (click)="removeFromCart(giftData.giftId)" id="remove-btn" class="remove">Remove from Cart</button>
+  </div>
+</div>
+<div class="button-container">
+  <button (click)="placeOrder()" class="order">Place Order</button>
+</div>

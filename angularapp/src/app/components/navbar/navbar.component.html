@@ -1,0 +1,33 @@
+<header>
+    <div class="logo">
+        <h1>Online Customized Gift Portal</h1>
+    </div>
+    <nav>
+        <ul class="nav-links">
+            <ng-container *ngIf="!isLoggedIn">
+                <li><a routerLink="/signup">Register</a></li>
+                <li><a routerLink="/login">Login</a></li>
+            </ng-container>
+            <ng-container *ngIf="isLoggedIn">
+                <li><a routerLink="/">Home</a></li>
+                <li><a routerLink="/admin/dashboard" *ngIf="isAdmin">Dashboard</a></li>
+                <li><a routerLink="/customer/dashboard" *ngIf="isCustomer">Dashboard</a></li>
+                <li>
+                    <button class="button button-logout" (click)="showLogoutPopup = true">
+                        Logout
+                    </button>
+                </li>
+            </ng-container>
+        </ul>   
+    </nav>
+</header>
+
+<div *ngIf="showLogoutPopup" class="logout-popup">
+    <div class="logout-popup-content">
+        <p>Are you sure you want to logout?</p>
+        <button (click)="logout(); showLogoutPopup = false" id="logout-btn" class="button button-yes">
+            Yes, Logout
+        </button>
+        <button (click)="showLogoutPopup = false" class="button button-cancel">Cancel</button>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+/* Styles for the form container */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .error-message {
+    color: red;
+    font-size: 12px;
+    position: absolute; /* Position the error message absolutely */
+    top: 0; /* Align the error message to the top */
+    right: 0; /* Align the error message to the right */
+  }
+
+  h2{
+    text-align: center;
+    margin: 20px;
+  }
+  
+  /* Styles for form groups */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Styles for labels */
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  /* Styles for text inputs and textareas */
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Styles for error messages */
+  
+  /* Styles for the Add Gift button */
+  .add-btn {
+    margin-top: 20px;
+  }
+  
+  button {
+    background-color: #007bff; /* Blue color */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+  }
+  .error-message {
+    color: red;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+  
+  button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
