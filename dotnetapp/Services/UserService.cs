@@ -78,6 +78,7 @@ public async Task<string> LoginAsync(string email, string password)
         {
              try
     {
+
         Console.WriteLine(email);
         var user = await _userManager.FindByEmailAsync(email);
         var id = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
@@ -91,7 +92,6 @@ Console.WriteLine("iddd "+id.UserId);
             Console.WriteLine("Invalid username or password"); // Debug output
             return null; // Invalid username or password
         }
-       var customer= _context.Customers.Find(UserId);
 
         // Generate a JWT token
         var token = GenerateJwtToken(user, id.UserId);
