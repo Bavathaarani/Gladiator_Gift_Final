@@ -56,7 +56,7 @@ export class MyCartComponent implements OnInit {
   calculateTotalAmount(): number {
     let totalAmount = 0;
     for (const gift of this.gifts) {
-      totalAmount += gift.quantity * gift.giftPrice;
+      totalAmount += gift.userQuantity * gift.giftPrice;
     }
     return totalAmount;
   }
