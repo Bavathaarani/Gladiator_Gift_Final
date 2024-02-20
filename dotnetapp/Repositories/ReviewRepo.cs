@@ -27,7 +27,10 @@ namespace dotnetapp.Repositories
  
         public async Task<List<Review>> GetAllReviewsAsync()
         {
-            return await _dbContext.Reviews.ToListAsync();
+            return await _dbContext.Reviews
+            .Include(b => b.User) // Include user data
+
+            .ToListAsync();
         }
  
         public async Task<Review> AddReviewAsync(Review review)
