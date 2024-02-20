@@ -71,5 +71,13 @@ export class OrderService {
     return this.http.get(`${this.apiUrl}/api/order/${orderId}`);
   }
 
+  deleteOrder(orderId: any): any {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}` // Assuming your token is a bearer token, replace it accordingly
+    });
+    return this.http.delete(`${this.apiUrl}/api/order/${orderId}`, { headers });
+  }
 
 }

@@ -48,4 +48,16 @@
         }
       );
     }
+    cancelOrder(orderId: string): void {
+      this.orderService.deleteOrder(orderId).subscribe(
+        response => {
+          console.log(response);
+          // Remove the cancelled order from the orders array
+          this.orders = this.orders.filter(order => order.orderId !== orderId);
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
   }

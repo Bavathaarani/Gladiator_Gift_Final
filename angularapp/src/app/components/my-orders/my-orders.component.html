@@ -46,7 +46,7 @@
               <th>Type</th>
               <th>Details</th>
               <th>Price</th>
-              <!-- <th>Quantity</th> -->
+              <th>Quantity</th>
             </tr>
           </thead>
           <tbody>
@@ -55,7 +55,8 @@
               <td>{{ gift.giftType }}</td>
               <td>{{ gift.giftDetails }}</td>
               <td>${{ gift.giftPrice }}</td>
-              <!-- <td>{{ gift.quantity }}</td> -->
+              <td>{{ gift.quantity }}</td>
+              <!-- <button (click)="cancelOrder(order.orderId)">Cancel Order</button> -->
             </tr>
           </tbody>
         </table>
