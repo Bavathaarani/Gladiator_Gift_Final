@@ -36,17 +36,17 @@ export class CustomerViewGiftsComponent implements OnInit {
   }
 
   hasCustomerId(): boolean {
-    return localStorage.getItem('customerId') === null;
+    // if(localStorage.getItem('customerId') === null;
+  // }
+if(localStorage.getItem('customerId'))
+{
+  return true
+}
+return false
+
+
+
   }
-// if( localStorage.getItem('customerId'))
-// {
-//   return true
-// }
-// return false
-// }
-
-
-//   }
 
 
 
@@ -56,9 +56,9 @@ export class CustomerViewGiftsComponent implements OnInit {
       customerName: this.name,
       address: this.address,
       //             // userId: Number(localStorage.getItem('userId')),
-      // user: { id: localStorage.getItem('userId') } as User,
+      userId:  localStorage.getItem('userId'),
     };
-    const userId = Number(localStorage.getItem('userId'));
+    // const userId = Number(localStorage.getItem('userId'));
 
     this.customerService.registerCustomer(newCustomer).subscribe(
       (response) => {

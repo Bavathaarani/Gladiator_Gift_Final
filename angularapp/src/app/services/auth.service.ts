@@ -159,7 +159,7 @@ export class AuthService {
           console.log(response.token.token);
           localStorage.setItem('token',response.token.token)
           const decodedToken = this.decodeToken(response.token.token);
- 
+ localStorage.setItem("customerId",response.token.customerId)
           if (decodedToken) {
             localStorage.setItem('userId', decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']);
             localStorage.setItem('userRole', decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']);
