@@ -5,6 +5,7 @@
     <img [src]="giftData.giftImageUrl" alt="{{ giftData.giftType }}" />
     <p>{{ giftData.giftDetails }}</p>
     <p>Price: {{ giftData.giftPrice }}</p>
+    <!-- <p>Available Quantity: {{ giftData.quantity }}</p> -->
     <p>
       Quantity: 
       <button style="margin-right: 10px;" (click)="decrementQuantity(giftData)" [disabled]="giftData.quantity === 1">-</button>

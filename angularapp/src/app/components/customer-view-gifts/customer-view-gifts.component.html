@@ -1,6 +1,6 @@
 <app-customerdashboard></app-customerdashboard>
 
-<div *ngIf="hasCustomerId(); else giftsList">
+<div *ngIf="!hasCustomerId(); else giftsList">
     <div class="modal-content">
         <form (ngSubmit)="onSubmit()">
             <h2>Fill Your Details</h2>

@@ -63,7 +63,10 @@ export class CustomerViewGiftsComponent implements OnInit {
 
     this.customerService.registerCustomer(newCustomer).subscribe(
       (response) => {
-        console.log(response);
+        console.log("response--------------------",response);
+
+
+
         localStorage.setItem('customerId', response.registeredCustomer.customerId);
         localStorage.setItem('cartId', response.cartId);
         const customerId = localStorage.getItem("customerId")
@@ -83,6 +86,8 @@ export class CustomerViewGiftsComponent implements OnInit {
     this.giftService.viewAllGifts().subscribe(
       (response: any) => { // Assuming the response is of type any
         console.log(response);
+        console.log("response--------------------",response);
+
         // Assuming the response contains $id and $values properties
         const id = response.$id;
         const values = response.$values;
