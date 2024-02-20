@@ -37,13 +37,14 @@ export class CustomerViewGiftsComponent implements OnInit {
 
 
   hasCustomerId(): boolean {
-    return localStorage.getItem('customerId') !== null;
+    return localStorage.getItem('customerId') === null;
   }
 // if( localStorage.getItem('customerId'))
 // {
 //   return true
 // }
 // return false
+// }
 
 
 //   }
@@ -55,22 +56,21 @@ export class CustomerViewGiftsComponent implements OnInit {
 
       customerName: this.name,
       address: this.address,
-      // userId: Number(localStorage.getItem('userId')),
-
-      // user: { userId: Number(localStorage.getItem('userId'))},
+      //             // userId: Number(localStorage.getItem('userId')),
+        user: { id: localStorage.getItem('userId') } as User,
     };
     const userId = Number(localStorage.getItem('userId'));
 
     this.customerService.registerCustomer(newCustomer).subscribe(
       (response) => {
-        console.log("response--------------------",response);
+        console.log("response-",response);
 
 
 
         localStorage.setItem('customerId', response.registeredCustomer.customerId);
         localStorage.setItem('cartId', response.cartId);
         const customerId = localStorage.getItem("customerId")
-        console.log(customerId);
+        console.log(this.customerId);
         const cardId = localStorage.getItem("cartId")
         console.log(cardId)
         // this.viewAllGifts();
@@ -117,7 +117,7 @@ export class CustomerViewGiftsComponent implements OnInit {
 
   customers: Customer = {
     customerId: Number(localStorage.getItem('customerId')),
-    user: { id: localStorage.getItem('userId') } as User,
+    user: { id: Number(localStorage.getItem('userId')) } as User,
   };
 
   addCart(giftId: any, updatedGift: any): void {
