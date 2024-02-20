@@ -87,9 +87,8 @@ namespace dotnetapp.Repositories
 
         public Customer viewCustomerById(long customerId)
         {
-        var customer = _context.Customers.FirstOrDefaultAsync(c => c.UserId == 18);
 
-            return customer;
+            return _context.Customers.Find(customerId);
         }
 
         // Include method to eagerly load the User navigation property
