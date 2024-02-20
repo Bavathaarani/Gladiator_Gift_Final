@@ -8,6 +8,10 @@
   margin: auto;
 }
 
+span{
+  color: red;
+}
+
 .required-label::after {
   content: "*";
   color: red;
