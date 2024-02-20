@@ -31,12 +31,15 @@ export class MyCartComponent implements OnInit {
           // Check if the gifts property is an object with $values array
           if (Array.isArray(response.gifts.$values)) {
             // Extract the array from the nested object
-            this.gifts = response.gifts.$values;
-          } else {
-            // If $values array is not present, consider gifts itself as the array
-            this.gifts = response.gifts;
-          }
+            // this.gifts = response.gifts.$values;
+            this.gifts = Array.isArray(response.gifts.$values) ? response.gifts.$values : response.gifts;
           this.totalAmount = response.totalAmount;
+          }
+          // } else {
+          //   // If $values array is not present, consider gifts itself as the array
+          //   this.gifts = response.gifts;
+          // }
+          // this.totalAmount = response.totalAmount;
           // this.gifts.forEach(gift => {
           //   gift.quantity = 1;
           // });
@@ -53,14 +56,16 @@ export class MyCartComponent implements OnInit {
   
   
 
+  // calculateTotalAmount(): number {
+  //   let totalAmount = 0;
+  //   for (const gift of this.gifts) {
+  //     totalAmount += this.userQuantity * gift.giftPrice;
+  //   }
+  //   return totalAmount;
+  // }
   calculateTotalAmount(): number {
-    let totalAmount = 0;
-    for (const gift of this.gifts) {
-      totalAmount += gift.userQuantity * gift.giftPrice;
-    }
-    return totalAmount;
+    return this.gifts.reduce((total, gift) => total + (gift.quantity * gift.giftPrice), 0);
   }
-
   
   // initializeQuantity() {
   //   this.gifts.forEach(giftData => {
@@ -75,12 +80,18 @@ export class MyCartComponent implements OnInit {
   }
 
 
-  updateQuantity(giftData: any): void {
-    if (giftData.quantity > this.maxQuantity) {
-      giftData.quantity = this.maxQuantity;
+  // updateQuantity(giftData: any): void {
+  //   if (giftData.quantity > this.maxQuantity) {
+  //     giftData.quantity = this.maxQuantity;
+  //   }
+    updateQuantity(giftData: any): void {
+      giftData.totalAmount = giftData.quantity * giftData.giftPrice;
+      this.updateTotalAmount();
     }
-    
-    giftData.totalAmount = giftData.quantity * giftData.giftPrice; // Update the total amount for the specific gift
+    updateTotalAmount(): void {
+      this.totalAmount = this.calculateTotalAmount();
+    }
+    giftData.totalAmount = this.userQuantity * giftData.giftPrice; // Update the total amount for the specific gift
     
     const customerId = localStorage.getItem('customerId'); // Get the customerId from local storage
     

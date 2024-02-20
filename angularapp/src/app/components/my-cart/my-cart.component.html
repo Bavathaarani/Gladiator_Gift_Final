@@ -8,7 +8,7 @@
     <p>Available Quantity : {{giftData.quantity}}</p>
     <p>
       Quantity:
-      <input type="number" class="userquantity" style="width: 50px;" [min]="1" [max]="giftData.quantity" [(ngModel)]="userQuantity" (ngModelChange)="validateQuantity(giftData)">
+      <input type="number" class="userquantity" style="width: 50px;" [min]="1" [max]="giftData.quantity" [(ngModel)]="userQuantity" (ngModelChange)="updateQuantity(giftData)">
       <span *ngIf="userQuantity > giftData.quantity" style="color: red;">Quantity exceeds available quantity!</span>
     </p>
     <button (click)="removeFromCart(giftData.giftId)" id="remove-btn" class="remove">Remove from Cart</button>
