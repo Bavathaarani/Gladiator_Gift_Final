@@ -28,28 +28,28 @@
     <p>Payment was successful!</p>
     <button (click)="navigateToDashboard()">OK</button>
   </div> -->
-  <app-customerdashboard></app-customerdashboard>
-<form>
-    <div *ngIf="customerData?.customer">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" [(ngModel)]="customerData.customer.customerName" readonly>
+<app-customerdashboard></app-customerdashboard>
+  <form>
+      <div *ngIf="customerData?.customer">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="customerData.customer.customerName" readonly>
+      </div>
+      <div *ngIf="customerData?.customer">
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" [(ngModel)]="customerData.customer.address" readonly></textarea>
+      </div>
+       <div>
+        <label for="totalPrice">Total Price:</label>
+        <input type="number" id="totalPrice" name="totalPrice" [(ngModel)]="totalAmount" readonly>
+      </div>
+      <div>
+        <button type="submit" (click)="submitOrder()">
+          Make Payment</button>    
     </div>
-    <div *ngIf="customerData?.customer">
-      <label for="address">Address:</label>
-      <textarea id="address" name="address" [(ngModel)]="customerData.customer.address" readonly></textarea>
-    </div>
-     <div>
-      <label for="totalPrice">Total Price:</label>
-      <input type="number" id="totalPrice" name="totalPrice" [(ngModel)]="totalAmount" readonly>
-    </div>
-    <div>
-      <button type="submit" (click)="submitOrder()">
-        Make Payment</button>    
+  </form>
+  
+  
+  <div *ngIf="showSuccessPopup" class="success-popup">
+    <p>Payment was successful!</p>
+    <button (click)="navigateToDashboard()">OK</button>
   </div>
-</form>
-
-
-<div *ngIf="showSuccessPopup" class="success-popup">
-  <p>Payment was successful!</p>
-  <button (click)="navigateToDashboard()">OK</button>
-</div>

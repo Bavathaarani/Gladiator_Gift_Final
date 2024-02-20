@@ -38,34 +38,6 @@ export class PlaceOrderComponent implements OnInit {
       }
     );
   }
-
-  // onSubmit(){
-  //   const data = {
-  //     customerId: this.customerId,
-  //     quantity: this.customerData.gifts.length,
-  //     orderPrice: this.customerData.totalAmount,
-  //     gifts:[...this.customerData.gifts],
-  //     customer: { customerId: this.customerId }
-  //   };
-  //   console.log(data)
-  //   this.orderService.addOrder(data).subscribe(
-  //     response => {
-  //       console.log(response);
-  //       this.router.navigate(['/customer/myorders']);
-  //     },
-  //     error => {
-  //       console.error(error);
-  //     }
-  //   );
-  
-  //   setTimeout(() => {
-  //     this.showSuccessPopup = true;
-  //   }, 2000);
-  // }
-  // navigateToDashboard() {
-  //   this.router.navigate(['/']);
-  // }
-
   submitOrder() {
     if (!this.customerData || !this.customerData.gifts || !this.customerData.gifts.$values || this.customerData.gifts.$values.length === 0) {
       console.error('Invalid customer data');
@@ -75,7 +47,7 @@ export class PlaceOrderComponent implements OnInit {
     const orderData = {
       customerId: this.customerId,
       quantity: this.customerData.gifts.$values.length,
-      orderPrice: Number(this.totalAmount),
+      orderPrice: this.customerData.totalAmount,
       gifts: this.customerData.gifts.$values.map(gift => ({
         // giftId: gift.giftId,
         giftType: gift.giftType,

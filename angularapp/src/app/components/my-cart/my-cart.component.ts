@@ -117,7 +117,7 @@ export class MyCartComponent implements OnInit {
   //       this.getAllGiftsFromCart();
   //     },
   //     error => {
-  //       console.error(error);updateCart
+  //       console.error(error);
   //     }
   //   );
   // }
