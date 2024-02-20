@@ -34,11 +34,10 @@
         response => {
           console.log(response);
           this.orders = response.$values;
-    
-          // Assign $values to gifts
           this.orders.forEach(order => {
             if (order.gifts && order.gifts.$values) {
               order.gifts = order.gifts.$values;
+              
             } else {
               console.error('order.gifts.$values is not defined:', order.gifts);
             }

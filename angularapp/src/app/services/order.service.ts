@@ -54,6 +54,7 @@ export class OrderService {
       'Authorization': `Bearer ${token}` // Assuming your token is a bearer token, replace it accordingly
     });
     const customerId = localStorage.getItem('userId');
+    console.log(customerId,"customerId");
     return this.http.get(`${this.apiUrl}/api/order/customer/${customerId}`);
   }
 
