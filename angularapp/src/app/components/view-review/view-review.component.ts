@@ -34,6 +34,7 @@ export class ViewReviewComponent implements OnInit {
         if (response && response.$values && Array.isArray(response.$values)) {
           // Assuming $values contains the array of Review objects
           this.reviews = response.$values;
+          console.log(this.reviews);
         } else {
           console.error('Invalid response format:', response);
         }
