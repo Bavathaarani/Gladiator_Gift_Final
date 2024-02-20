@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -43,6 +44,7 @@ export class NavbarComponent implements OnInit {
     this.isAdmin = false;
     this.isCustomer = false;
     this.authService.logout();
+    localStorage.clear()
     this.router.navigate(['/login']);
   }
 }

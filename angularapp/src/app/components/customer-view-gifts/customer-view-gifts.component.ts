@@ -38,8 +38,11 @@ export class CustomerViewGiftsComponent implements OnInit {
   hasCustomerId(): boolean {
     // if(localStorage.getItem('customerId') === null;
   // }
-if(localStorage.getItem('customerId'))
+
+  // console.log("localStorage.getItem('customerId')",localStorage.getItem('customerId')=="null",localStorage.getItem('customerId')==null)
+if(localStorage.getItem('customerId')=="null")
 {
+  
   return true
 }
 return false
