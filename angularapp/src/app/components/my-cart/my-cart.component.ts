@@ -37,9 +37,9 @@ export class MyCartComponent implements OnInit {
             this.gifts = response.gifts;
           }
           this.totalAmount = response.totalAmount;
-          this.gifts.forEach(gift => {
-            gift.quantity = 1;
-          });
+          // this.gifts.forEach(gift => {
+          //   gift.quantity = 1;
+          // });
         } else {
           console.error('Invalid response format:', response);
         }
@@ -67,15 +67,17 @@ export class MyCartComponent implements OnInit {
   }
   
   incrementQuantity(giftData: any) {
-    if (giftData.quantity < 100) {
+    // Check if the current quantity is less than the available quantity
+    if (giftData.quantity < giftData.availableQuantity) {
+      // Increment the quantity
       giftData.quantity++;
     }
   }
-  initializeQuantity() {
-    this.gifts.forEach(giftData => {
-      giftData.quantity = 1;
-    });
-  }
+  // initializeQuantity() {
+  //   this.gifts.forEach(giftData => {
+  //     giftData.quantity = 1;
+  //   });
+  // }
 
 
   placeOrder() {
