@@ -100,13 +100,15 @@ public async Task<string> LoginAsync(string email, string password)
         // Generate a JWT token
         var token = GenerateJwtToken(user, id.UserId);
         Console.WriteLine("Token: " + token); // Debug output
-        let cid;
+        let cid=null;
         if(customer?.CustomerId)
         {
-            cid=customer?.CustomerId
+            cid=customer.CustomerId;
         }
  
-        return {"token":token,"CustomerId":cid};
+        return {"token":token,"CustomerId":cid}
+
+        
     }
             catch (Exception ex)
             {
