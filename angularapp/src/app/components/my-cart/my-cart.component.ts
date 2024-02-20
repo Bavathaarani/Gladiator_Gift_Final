@@ -60,7 +60,9 @@ export class MyCartComponent implements OnInit {
     }
     return totalAmount;
   }
-
+  validateQuantity(giftData: any): void {
+    // Your validation logic here, using giftData.userQuantity
+  }
   
   // initializeQuantity() {
   //   this.gifts.forEach(giftData => {
