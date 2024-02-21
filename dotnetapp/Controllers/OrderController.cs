@@ -31,7 +31,7 @@ namespace dotnetapp.Controllers
             return BadRequest("Failed to add order.");
         }
  
-         [Authorize(Roles = "admin,customer")]
+        [Authorize(Roles = "admin,customer")]
         [HttpGet]
         public ActionResult<List<Order>> GetAllOrders()
         {
