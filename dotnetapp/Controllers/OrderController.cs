@@ -3,6 +3,7 @@ using dotnetapp.Models;
 using dotnetapp.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
  
 namespace dotnetapp.Controllers
 {
@@ -66,7 +67,7 @@ namespace dotnetapp.Controllers
  
         //     return Ok(deletedOrder);
         // }
-        [Authorize(Roles = "admin")]
+        [Authorize]
         [HttpGet("customer/{customerId}")]
         public ActionResult<List<Order>> GetOrdersByCustomerId(long customerId)
         {
