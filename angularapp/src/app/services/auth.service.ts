@@ -118,6 +118,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { User } from '../models/user.model';
  
 @Injectable({
   providedIn: 'root'
@@ -140,8 +141,8 @@ export class AuthService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
  
-  register(username: string, password: string, role: string, email: string, mobileNumber: string): Observable<any> {
-    const body = { username, password, role, email, mobileNumber };
+  register(user: User): Observable<any> {
+    const body = user;
     console.log(body);
  
     return this.http.post<any>(`${this.apiUrl}/api/register`, body).pipe(

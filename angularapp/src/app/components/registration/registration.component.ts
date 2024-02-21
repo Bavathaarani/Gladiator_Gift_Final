@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-registration',
@@ -41,8 +42,9 @@ export class RegistrationComponent implements OnInit {
     if (!this.isPasswordComplex(this.password)) {
       return; // Password complexity check failed
     }
+    
 
-    this.authService.register(this.username, this.password, this.role, this.email, this.mobileNumber).subscribe(
+    this.authService.register(user).subscribe(
       (user) => {
         console.log(user);
         this.router.navigate(['/login']);
