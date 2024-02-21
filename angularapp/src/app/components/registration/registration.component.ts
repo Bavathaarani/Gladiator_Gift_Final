@@ -42,7 +42,13 @@ export class RegistrationComponent implements OnInit {
     if (!this.isPasswordComplex(this.password)) {
       return; // Password complexity check failed
     }
-    
+     const user: User = {
+          username: this.username,
+          password: this.password,
+          role: this.role,
+          email: this.email,
+          mobileNumber: this.mobileNumber
+        }
 
     this.authService.register(user).subscribe(
       (user) => {
