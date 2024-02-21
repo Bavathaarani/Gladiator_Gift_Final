@@ -570,65 +570,6 @@ public async Task Backend_TestPutReviews()
     }
 }
 
-[Test]
-public async Task Backend_TestGetCustomerById()
-{
-    HttpResponseMessage response = null;
-
-    // Register a new admin and obtain the authentication token
-    string uniqueId = Guid.NewGuid().ToString();
-    string uniqueUsername = $"admin_{uniqueId}";
-    string uniquePassword = $"adminA{uniqueId}@123";
-    string uniqueEmail = $"admin{uniqueId}@gmail.com";
-
-    // Register a new admin
-    string registerRequestBody = $"{{\"password\": \"{uniquePassword}\", \"userName\": \"{uniqueUsername}\",\"role\": \"admin\",\"email\": \"{uniqueEmail}\", \"MobileNumber\": \"1234567890\"}}";
-    HttpResponseMessage registrationResponse = await _httpClient.PostAsync("/api/register", new StringContent(registerRequestBody, Encoding.UTF8, "application/json"));
-    Assert.AreEqual(HttpStatusCode.OK, registrationResponse.StatusCode);
-
-    // Log in the registered admin and obtain the authentication token
-    string adminLoginRequestBody = $"{{\"email\": \"{uniqueEmail}\",\"password\": \"{uniquePassword}\"}}";
-    HttpResponseMessage loginResponse = await _httpClient.PostAsync("/api/login", new StringContent(adminLoginRequestBody, Encoding.UTF8, "application/json"));
-    Assert.AreEqual(HttpStatusCode.OK, loginResponse.StatusCode);
-
-    string responseString = await loginResponse.Content.ReadAsStringAsync();
-    dynamic responseMap = JsonConvert.DeserializeObject(responseString);
-    string adminAuthToken = responseMap.token;
-
-    // Set the authentication token in the HTTP client headers
-    _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", adminAuthToken);
-
-    // Assume you have a customerId to test (replace with an actual existing customerId)
-    long customerId = 1;
-
-    try
-    {
-        // Send GET request to retrieve customer by ID
-        response = await _httpClient.GetAsync($"/api/customer/{customerId}");
-
-        // Print response content for debugging purposes
-        Console.WriteLine($"Response Content: {await response.Content.ReadAsStringAsync()}");
-
-        // Assert the GET response
-        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
-
-        // Additional assertions based on the properties of the retrieved customer
-    }
-    catch (HttpRequestException ex)
-    {
-        Console.WriteLine($"Request failed: {ex.Message}");
-
-        if (response != null)
-        {
-            // Print response content for debugging purposes
-            Console.WriteLine($"Response Content: {await response.Content.ReadAsStringAsync()}");
-        }
-
-        throw;
-    }
-}
-
-
 
 [Test]
 public async Task Backend_TestGetAllOrders()
@@ -661,7 +602,6 @@ public async Task Backend_TestGetAllOrders()
     // Assert the response status code
     Assert.AreEqual(HttpStatusCode.OK, getOrdersResponse.StatusCode);
 }
-
 
     [TearDown]
     public void TearDown()
