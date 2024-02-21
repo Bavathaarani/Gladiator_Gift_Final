@@ -157,7 +157,8 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/api/login`, loginData)
       .pipe(
         tap(response => {
-          console.log(response.token.token);
+          if(response && response.token && response.token.token){
+          // console.log(response.token.token);
           localStorage.setItem('token',response.token.token)
           const decodedToken = this.decodeToken(response.token.token);
           if(response.token.customerId==0)
@@ -182,6 +183,7 @@ export class AuthService {
           } else {
             console.error('Unable to decode token or missing claims');
           }
+        }
         })
       );
   }
