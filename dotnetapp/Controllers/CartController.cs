@@ -19,7 +19,7 @@ public class CartController : ControllerBase
         _giftService = giftService;
     }
  
-    // [Authorize(Roles = "customer")]      
+    [Authorize(Roles = "customer")]      
     [HttpPut("update/{cartId}")]
     public IActionResult UpdateCart([FromBody] Cart updatedCart)
     {

@@ -33,11 +33,11 @@ namespace dotnetapp.Services
             return _orderRepository.GetOrderById(orderId);
         }
  
-        public Order DeleteOrder(long orderId)
-        {
-            // Additional business logic, if needed
-            return _orderRepository.DeleteOrder(orderId);
-        }
+        // public Order DeleteOrder(long orderId)
+        // {
+        //     // Additional business logic, if needed
+        //     return _orderRepository.DeleteOrder(orderId);
+        // }
  
         public List<Order> GetOrdersByCustomerId(long customerId)
         {
