@@ -23,28 +23,40 @@ describe("OrderService", () => {
     httpMock.verify(); // Ensure that there are no outstanding requests
   });
 
-  fit("frontend_should_add_an_order_when_addOrder_is_called", () => {
-    const order = {
-      orderId: 1,
-      orderPrice: 100,
-      quantity: 1,
+  fit('Frontend_should_add_an_order_when_addOrder_is_called', () => {
+    const order = { 
+      orderId: 1, 
+      orderPrice: 100, 
+      quantity: 1 
     };
-    const response = { id: "1", ...order };
+    const response = { id: '1', ...order };
+  
     (service as any).addOrder(order).subscribe();
     const req = httpMock.expectOne(`${(service as any).apiUrl}/api/order`);
-    expect(req.request.method).toBe("POST");
+    
+    expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual(order);
-    req.flush(response);
-  });
+    expect(req.request.headers.get('Authorization')).toBeTruthy(); // Assuming you want to check if Authorization header is set
+    
+    req.flush(response); 
+});
 
-  fit("frontend_should_retrieve_all_orders_when_viewAllOrders_is_called", () => {
-    const orders = [
-      { orderId: 1, orderPrice: 100, quantity: 1 },
-      { orderId: 2, orderPrice: 200, quantity: 2 },
+fit('Frontend_should_get_all_orders_when_viewAllOrders_is_called', () => {
+    const mockOrders = [
+        { orderId: 1, orderPrice: 100, quantity: 1 },
+        { orderId: 2, orderPrice: 150, quantity: 2 }
+        // Add more sample orders as needed
     ];
+
+    const response = mockOrders; // Assuming the server returns an array of orders
+  
     (service as any).viewAllOrders().subscribe();
     const req = httpMock.expectOne(`${(service as any).apiUrl}/api/order`);
-    expect(req.request.method).toBe("GET");
-    req.flush(orders);
-  });
+    
+    expect(req.request.method).toBe('GET');
+    expect(req.request.headers.get('Authorization')).toBeTruthy();
+    
+    req.flush(response); 
+});
+
 });
