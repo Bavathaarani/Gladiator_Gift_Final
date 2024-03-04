@@ -126,7 +126,7 @@
   
   th, td {
     padding: 15px;
-    /* text-align: left; */
+    text-align: left; 
   }
   
   th {
@@ -142,7 +142,6 @@
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
-    margin: 20px 0;
     border: none;
     cursor: pointer;
     text-align: center;
