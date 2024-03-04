@@ -116,4 +116,8 @@ export class EditGiftComponent implements OnInit {
     });
   }
 
+  onCancel(){
+    this.router.navigate(['/admin/gifts/view'])
+  }
+
 }

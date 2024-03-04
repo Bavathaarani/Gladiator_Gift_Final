@@ -40,6 +40,13 @@ form {
   /* Styles for the Add Gift button */
   .add-btn {
     margin-top: 20px;
+    display: flex;
+    gap: 20px;
+
+  }
+
+  .cancel{
+    background-color: crimson;
   }
   
   button {
