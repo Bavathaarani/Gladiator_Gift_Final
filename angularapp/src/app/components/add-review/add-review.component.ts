@@ -14,7 +14,7 @@ export class AddReviewComponent implements OnInit {
   addReviewForm: FormGroup;
   errorMessage = '';
   gifts: any =[];
-  giftTypes: any;
+  giftTypes: string[] = [];
 
   // userName: string | null = localStorage.getItem('userName');
   // userName: string | null;
@@ -34,6 +34,7 @@ export class AddReviewComponent implements OnInit {
     // this.addReviewForm.patchValue({
     //   userName: this.emailaddress;
     // });
+    
   }
   getCurrentDate(): string {
     const currentDate = new Date();

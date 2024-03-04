@@ -64,8 +64,8 @@
         }
       );
     }
-    navigateToAddReview(giftTypes: string[]){
+    navigateToAddReview(){
         // Only navigate if Add Review is not disabled
-        this.router.navigate(['/customer/addreview'], { state: { giftTypes } });
+        this.router.navigate(['/customer/addreview']);
     }
   }

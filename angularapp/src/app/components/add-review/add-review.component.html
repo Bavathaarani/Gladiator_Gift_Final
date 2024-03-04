@@ -66,7 +66,7 @@
 
     <div class="form-group">
         <label for="subject">Gift Type:<span class="asterisk">*</span></label>
-        <select id="subject" formControlName="subject">
+        <select id="subject" formControlName="subject" >
             <option value="" disabled selected>Select Gift Type</option>
             <option *ngFor="let giftType of giftTypes" [value]="giftType">{{ giftType }}</option>
         </select>
