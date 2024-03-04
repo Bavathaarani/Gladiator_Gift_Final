@@ -18,7 +18,7 @@ namespace dotnetapp.Controllers
             _orderService = orderService;
         }
  
-        [Authorize(Roles = "customer")]
+        [Authorize]
     [HttpPost]
         public ActionResult<Order> AddOrder([FromBody] Order order)
         {
@@ -32,7 +32,7 @@ namespace dotnetapp.Controllers
             return BadRequest("Failed to add order.");
         }
  
-        [Authorize(Roles = "admin,customer")]
+        [Authorize]
         [HttpGet]
         public ActionResult<List<Order>> GetAllOrders()
         {
@@ -40,7 +40,7 @@ namespace dotnetapp.Controllers
             return Ok(orders);
         }
  
-     [Authorize(Roles = "admin")]
+     [Authorize]
         [HttpGet("{orderId}")]
         public ActionResult<Order> GetOrderById(long orderId)
         {
