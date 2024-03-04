@@ -107,7 +107,7 @@ ul.nav-links a:hover {
     align-items: center;
     /* background-color: #007bff; */
     color: #fff;
-    padding: 10px;
+    /* padding: 10px; */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .link {
@@ -123,6 +123,14 @@ ul.nav-links a:hover {
 
 .link:not(:last-child) {
     margin-right: 10px;
+}
+
+.home-link {
+    background-color: #28a745;
+}
+
+.home-link:hover {
+    background-color: #f05518;
 }
 
 .my-gifts-link {

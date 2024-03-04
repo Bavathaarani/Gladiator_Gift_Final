@@ -42,7 +42,8 @@
                 <li><a routerLink="/login">Login</a></li>
             </ng-container>
             <ng-container *ngIf="isLoggedIn">
-                <li><a routerLink="/" class="home">Home</a></li>
+                <!-- <li><a routerLink="/" class="link home-link">Home</a></li> -->
+                <div class="link home-link" [routerLink]="['/']" [class.active]="isActive('/')">Home</div>
                 <li *ngIf="isAdmin">
                     <!-- <a routerLink="/admin/dashboard">Admin Dashboard</a> -->
                     <div class="container">

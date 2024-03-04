@@ -80,6 +80,22 @@ button{
   border-radius: 10px;
 }
 
+/* Add this CSS in your styles.css or equivalent */
+
+#noGifts {
+  text-align: center;
+  padding: 20px;
+  font-size: large;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  margin: 20px;
+  border-radius: 5px;
+  color: #555;
+}
+
+/* You can adjust the colors and styles based on your design preferences */
+
+
 
 /* .userHomeBody{
   justify-content: center;
