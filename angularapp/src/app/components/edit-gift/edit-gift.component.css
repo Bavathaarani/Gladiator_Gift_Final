@@ -1,9 +1,13 @@
 /* Styles for the form container */
 form {
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff; /* Add a white background */
+  padding: 20px;
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 10px; /* Add rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
   /* Styles for form groups */
   .form-group {
     margin-bottom: 20px;

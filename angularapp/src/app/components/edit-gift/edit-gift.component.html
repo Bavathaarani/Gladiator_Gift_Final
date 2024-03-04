@@ -71,7 +71,7 @@
       <input type="text" id="giftType" formControlName="giftType">
       <div *ngIf="editGiftForm.get('giftType').invalid && editGiftForm.get('giftType').touched" class="error-message">Gift Type is required</div> <!-- Display the error message conditionally -->
     </label>
-  </div>
+  </div><br>
 
   <div class="form-group">
     <label for="giftImageUrl">
@@ -80,7 +80,7 @@
             accept=".png, .jpg">
       <div *ngIf="editGiftForm.get('giftImageUrl').invalid && editGiftForm.get('giftImageUrl').touched" class="error-message">Gift Image is required</div> <!-- Display the error message conditionally -->
     </label>
-  </div>
+  </div><br>
 
   <div class="form-group">
     <label for="giftDetails">
@@ -88,7 +88,7 @@
       <textarea id="giftDetails" formControlName="giftDetails"></textarea>
       <div *ngIf="editGiftForm.get('giftDetails').invalid && editGiftForm.get('giftDetails').touched" class="error-message">Gift Details is required</div> <!-- Display the error message conditionally -->
     </label>
-  </div>
+  </div><br>
 
   <div class="form-group">
     <label for="quantity">
@@ -97,7 +97,7 @@
       <div *ngIf="editGiftForm.get('quantity').invalid && editGiftForm.get('quantity').touched" class="error-message">Quantity is required</div> <!-- Display the error message conditionally -->
       <div *ngIf="editGiftForm.get('quantity').hasError('min') && editGiftForm.get('quantity').touched" class="error-message">Quantity must be greater than zero</div> <!-- Display the error message conditionally -->
     </label>
-  </div>
+  </div><br>
 
   <div class="form-group">
     <label for="giftPrice">
@@ -106,7 +106,7 @@
       <div *ngIf="editGiftForm.get('giftPrice').invalid && editGiftForm.get('giftPrice').touched" class="error-message">Price is required</div> <!-- Display the error message conditionally -->
       <div *ngIf="editGiftForm.get('giftPrice').hasError('min') && editGiftForm.get('giftPrice').touched" class="error-message">Price must be greater than zero</div> <!-- Display the error message conditionally -->
     </label>
-  </div>
+  </div><br>
 
   <div *ngIf="errorMessage" class="error-message">
     *{{ errorMessage }}

@@ -2,7 +2,13 @@
 form {
   max-width: 400px;
   margin: 0 auto;
+  background-color: #fff; /* Add a white background */
+  padding: 20px;
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 10px; /* Add rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
 }
+
 span {
   color: red;
 }
@@ -39,11 +45,13 @@ textarea {
 /* Styles for the Add Gift button */
 .add-btn {
   margin-top: 20px;
+  text-align: center;
 }
 
 button {
   background-color: #007bff; /* Blue color */
   color: #fff;
+  opacity: 0.7;
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -52,6 +60,16 @@ button {
   font-weight: bold;
   text-align: center;
   transition: background-color 0.3s ease-in-out;
+}
+
+button:disabled {
+  cursor: not-allowed; /* Change cursor for disabled state */
+  background-color: #ccc; /* Change background color for disabled state */
+  opacity: 1; /* Adjust opacity for disabled state */
+}
+
+button:hover:disabled {
+  background-color: #ccc; /* Darker gray on hover for disabled state */
 }
 
 .error-message {

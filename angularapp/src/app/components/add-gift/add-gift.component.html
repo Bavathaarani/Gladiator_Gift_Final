@@ -67,7 +67,7 @@
             <input type="text" id="giftType" formControlName="giftType">
             <div *ngIf="addGiftForm.get('giftType').invalid && addGiftForm.get('giftType').touched" class="error-message">Gift Type is required</div> <!-- Display the error message conditionally -->
         </label>
-    </div>
+    </div><br>
  
     <div class="form-group">
         <label for="giftImageUrl" style="position: relative;">
@@ -76,7 +76,7 @@
             accept=".png, .jpg">
             <div *ngIf="addGiftForm.get('giftImageUrl').invalid && addGiftForm.get('giftImageUrl').touched" class="error-message">Gift Image is required</div> 
         </label>
-    </div>
+    </div><br>
     
  
     <div class="form-group">
@@ -85,7 +85,7 @@
             <textarea id="giftDetails" formControlName="giftDetails"></textarea>
             <div *ngIf="addGiftForm.get('giftDetails').invalid && addGiftForm.get('giftDetails').touched" class="error-message">Gift Details is required</div> <!-- Display the error message conditionally -->
         </label>
-    </div>
+    </div><br>
 
     <div class="form-group">
         <label for="quantity" style="position: relative;"> <!-- Add relative positioning to the label -->
@@ -93,7 +93,7 @@
             <input type="number" id="quantity" formControlName="quantity">
             <div *ngIf="addGiftForm.get('quantity').invalid && addGiftForm.get('quantity').touched" class="error-message">Quantity is required</div> <!-- Display the error message conditionally -->
         </label>
-    </div>
+    </div><br>
  
     <div class="form-group">
         <label for="giftPrice" style="position: relative;"> <!-- Add relative positioning to the label -->
@@ -101,14 +101,15 @@
             <input type="number" id="giftPrice" formControlName="giftPrice">
             <div *ngIf="addGiftForm.get('giftPrice').invalid && addGiftForm.get('giftPrice').touched" class="error-message">Price is required</div> <!-- Display the error message conditionally -->
         </label>
-    </div>
+    </div><br>
  
     <div *ngIf="errorMessage" class="error-message">
         *{{ errorMessage }}
     </div>
  
     <div class="add-btn">
-        <button type="submit">Add Gift</button>
+        <button type="submit" [disabled]="addGiftForm.invalid">Add Gift</button>
+        <!-- <button type="submit">Add Gift</button> -->
     </div>
 </form>
 
