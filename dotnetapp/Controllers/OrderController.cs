@@ -81,7 +81,7 @@ using System.Collections.Generic;
 using dotnetapp.Models;
 using dotnetapp.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
+// using Microsoft.AspNetCore.Authorization;
  
 namespace dotnetapp.Controllers
 {
@@ -96,7 +96,7 @@ namespace dotnetapp.Controllers
             _orderService = orderService;
         }
  
-    [Authorize]
+    // [Authorize]
     [HttpPost]
         public ActionResult<Order> AddOrder([FromBody] Order order)
         {
@@ -110,7 +110,7 @@ namespace dotnetapp.Controllers
             return BadRequest("Failed to add order.");
         }
  
-        [Authorize]
+        // [Authorize]
         [HttpGet]
         public ActionResult<List<Order>> GetAllOrders()
         {
@@ -118,7 +118,7 @@ namespace dotnetapp.Controllers
             return Ok(orders);
         }
  
-        [Authorize]
+        // [Authorize]
         [HttpGet("{orderId}")]
         public ActionResult<Order> GetOrderById(long orderId)
         {
@@ -146,7 +146,7 @@ namespace dotnetapp.Controllers
         //     return Ok(deletedOrder);
         // }
  
-        [Authorize]
+        // [Authorize]
         [HttpGet("customer/{customerId}")]
         public ActionResult<List<Order>> GetOrdersByCustomerId(long customerId)
         {

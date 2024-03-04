@@ -98,10 +98,6 @@ namespace dotnetapp.Data
                 .HasForeignKey(g => g.OrderId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-           modelBuilder.Entity<Gift>()
-    .Property(g => g.GiftId)
-    .ValueGeneratedOnAdd(); // This is equivalent to HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
-
 
  
  
