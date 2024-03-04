@@ -54,7 +54,14 @@
                       </div>
                 </li>
                 <li *ngIf="isCustomer">
-                    <a routerLink="/customer/dashboard">Customer Dashboard</a>
+                    <!-- <a routerLink="/customer/dashboard">Customer Dashboard</a> -->
+                    <div class="container">
+                        <div class="link my-gifts-link" [routerLink]="['/customer/gifts/view']" [class.active]="isActive('/customer/gifts/view')">Gifts</div>
+                        <div class="link add-gifts-link" [routerLink]="['/customer/mycart']" [class.active]="isActive('/customer/mycart')">My Cart</div>
+                        <div class="link view-orders-link" [routerLink]="['/customer/myorders']" [class.active]="isActive('/customer/myorders')">My Orders</div>
+                        <div class="link view-orders-link" [routerLink]="['/customer/addreview']" [class.active]="isActive('/customer/addreview')">Add review</div>
+                      </div>
+                    
                 </li>
                 <li>
                     <button class="button button-logout" (click)="showLogoutPopup = true">
