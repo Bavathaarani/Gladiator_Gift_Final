@@ -42,15 +42,15 @@
                 <li><a routerLink="/login">Login</a></li>
             </ng-container>
             <ng-container *ngIf="isLoggedIn">
-                <li><a routerLink="/">Home</a></li>
+                <li><a routerLink="/" class="home">Home</a></li>
                 <li *ngIf="isAdmin">
-                    <a routerLink="/admin/dashboard"></a>
+                    <!-- <a routerLink="/admin/dashboard">Admin Dashboard</a> -->
                     <div class="container">
                         <div class="link my-gifts-link" [routerLink]="['/admin/gifts/view']" [class.active]="isActive('/admin/gifts/view')">My Gifts</div>
                         <div class="link add-gifts-link" [routerLink]="['/admin/addgift']" [class.active]="isActive('/admin/addgift')">Add Gifts</div>
                         <div class="link view-orders-link" [routerLink]="['/admin/vieworders']" [class.active]="isActive('/admin/vieworders')">View Orders</div>
                         <div class="link view-review-link" [routerLink]="['/admin/viewreview']" [class.active]="isActive('/admin/viewreview')">View Review</div>
-                    </div>
+                      </div>
                 </li>
                 <li *ngIf="isCustomer">
                     <a routerLink="/customer/dashboard">Customer Dashboard</a>

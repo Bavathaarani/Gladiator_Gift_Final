@@ -47,4 +47,8 @@ export class NavbarComponent implements OnInit {
     localStorage.clear()
     this.router.navigate(['/login']);
   }
+
+  isActive(route: string): boolean {
+    return this.router.url === route;
+  }
 }
