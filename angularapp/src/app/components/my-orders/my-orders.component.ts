@@ -62,10 +62,8 @@
         }
       );
     }
-    navigateToAddReview(): void {
-      if (!this.disableAddReview) {
+    navigateToAddReview(){
         // Only navigate if Add Review is not disabled
-        this.router.navigate(['/add-review']);
-      }
+        this.router.navigate(['/customer/addreview']);
     }
   }
