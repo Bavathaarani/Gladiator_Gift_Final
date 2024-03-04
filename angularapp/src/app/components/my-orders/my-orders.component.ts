@@ -12,6 +12,8 @@
   export class MyOrdersComponent implements OnInit {
     orders = [];
     customers = {};
+    giftTypes: string[] = [];
+
     disableAddReview = true;
     constructor(private orderService: OrderService, private customerService: CustomerService, private giftService:GiftService, private router: Router) { }
 
@@ -62,8 +64,8 @@
         }
       );
     }
-    navigateToAddReview(){
+    navigateToAddReview(giftTypes: string[]){
         // Only navigate if Add Review is not disabled
-        this.router.navigate(['/customer/addreview']);
+        this.router.navigate(['/customer/addreview'], { state: { giftTypes } });
     }
   }
