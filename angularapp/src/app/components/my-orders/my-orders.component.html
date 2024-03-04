@@ -23,7 +23,7 @@
 </div> -->
 
 <app-customerdashboard></app-customerdashboard>
-<h1>My Orders</h1>
+<h2>My Orders</h2>
 <div *ngIf="orders.length === 0">
   <p>No orders placed yet.</p>
 </div>
@@ -68,4 +68,4 @@
   </tbody>
 </table>
 
-<button (click)="navigateToAddReview()" [disabled]="disableAddReview">Add Review</button>
+<button class="reviewbutton" (click)="navigateToAddReview()" [disabled]="disableAddReview">Add Review</button>
