@@ -3,6 +3,8 @@ import { OrderService } from 'src/app/services/order.service';
 import { Order } from 'src/app/models/order.model';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Customer } from 'src/app/models/customer.model';
+import { forkJoin } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-view-orders',
@@ -83,7 +85,70 @@ export class ViewOrdersComponent implements OnInit {
     // }, error => {
     //   console.error('Error:', error);
     // });
-  //   
+  //   this.orderService.viewAllOrders().subscribe((response: any) => {
+  //     console.log(response);
+  //     if (response.$values && Array.isArray(response.$values)) {
+  //       this.orders = response.$values;
+  //     } else if (response.$values && typeof response.$values === 'object') {
+  //       this.orders = Object.values(response.$values);
+  //     } else {
+  //       this.orders = [];
+  //     }
 
-  
+  //     // Fetch the customer details for each order
+  //     this.orders.forEach((order: any) => {
+  //       this.customerService.viewCustomerById(order.customerId).subscribe((customer: any) => {
+  //         order.customer = customer; // Add the customer details to the order
+  //       });
+  //     });
+
+  //     console.log(this.orders);
+  //     if (!this.orders || this.orders.length === 0) {
+  //       this.message = 'No orders placed';
+  //     } else {
+  //       this.message = '';
+  //     }
+  //   }, error => {
+  //     console.error('Error:', error);
+  //   });
+  // }
+  // }
+
+  this.orderService.viewAllOrders().subscribe((response: any) => {
+    console.log(response);
+    let orders = [];
+    if (response.$values && Array.isArray(response.$values)) {
+      orders = response.$values;
+    } else if (response.$values && typeof response.$values === 'object') {
+      orders = Object.values(response.$values);
+    }
+
+    // Create an array of observables for the HTTP requests
+    const observables = orders.map((order: any) => {
+      return this.customerService.viewCustomerById(order.customerId).pipe(
+        map((customer: any) => {
+          // Add the customer details to the order
+          order.customer = customer;
+          return order;
+        })
+
+      );
+    });
+
+    forkJoin(observables).subscribe((completedOrders: any) => {
+      this.orders = completedOrders;
+      console.log(this.orders);
+      if (!this.orders || this.orders.length === 0) {
+        this.message = 'No orders placed';
+      } else {
+        this.message = '';
+      }
+    }, error => {
+      console.error('Error:', error);
+    });
+  }, error => {
+    console.error('Error:', error);
+  });
+}
+}
   

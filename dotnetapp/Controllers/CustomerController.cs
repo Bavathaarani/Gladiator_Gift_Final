@@ -22,7 +22,6 @@ namespace dotnetapp.Controllers
             _context = context;
         }
 
-        [Authorize(Roles = "customer")] 
         [HttpPost]
         public IActionResult registerCustomer([FromBody] Customer customer)
         {
@@ -42,7 +41,6 @@ return Ok(new { RegisteredCustomer = registeredCustomer, CartId = newCart.CartId
             // return CreatedAtAction(nameof(registerCustomer), new { id = registeredCustomer.CustomerId, cartId = newCart.CartId }, registeredCustomer);
         }
 
-        [Authorize(Roles = "admin")] 
         [HttpGet("{customerId}")]
         public IActionResult viewCustomerById(long customerId)
         {

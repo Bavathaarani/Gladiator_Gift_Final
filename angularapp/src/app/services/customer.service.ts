@@ -28,6 +28,7 @@ export class CustomerService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}` // Assuming your token is a bearer token, replace it accordingly
     });
+    console.log(customerId);
     return this.http.get(`${this.apiUrl}/api/customer/${customerId}`, {headers});
   }
 
