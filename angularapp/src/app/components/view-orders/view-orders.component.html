@@ -14,11 +14,12 @@
     </thead>
     <tbody>
         <tr *ngFor="let order of orders;let i=index">
-            <!-- <td>{{ order.orderId }}</td> -->
             <td>{{ i + 1 }}</td>
-            <td>{{ order.customer.customerName }}</td>
-            <td>{{ order.giftType }}</td>
-            <td>{{ order.customer.address }}</td>
+            <td>{{ order.customer?.customerName }}</td>
+            <td><div *ngFor="let gift of order.gifts">
+                {{ gift.giftType }}
+            </div></td>
+            <td>{{ order.customer?.address }}</td>
             <td>{{ order.quantity }}</td>
             <td>{{ order.orderPrice }}</td>
         </tr>
