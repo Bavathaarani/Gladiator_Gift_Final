@@ -43,13 +43,25 @@ export class ViewGiftsComponent {
     this.router.navigate(['/admin/editgift', gift.giftId], { queryParams: queryParams });
   }
 
-  deleteGift(gift: Gift): void {
-    this.giftService.deleteGift(gift.giftId).subscribe(() => {
-      console.log('Gift deleted successfully');
-      this.gifts = this.gifts.filter(g => g.giftId !== gift.giftId);
-    }, (error) => {
-      console.error(error);
-    });
+  // deleteGift(gift: Gift): void {
+  //   this.giftService.deleteGift(gift.giftId).subscribe(() => {
+  //     console.log('Gift deleted successfully');
+  //     this.gifts = this.gifts.filter(g => g.giftId !== gift.giftId);
+  //   }, (error) => {
+  //     console.error(error);
+  //   });
+  // }
+  deleteGift(gift: any): void {
+    const userConfirmed = window.confirm(`Are you sure you want to delete the gift '${gift.giftType}'?`);
+
+    if (userConfirmed) {
+      this.giftService.deleteGift(gift.giftId).subscribe(() => {
+            console.log('Gift deleted successfully');
+            this.gifts = this.gifts.filter(g => g.giftId !== gift.giftId);
+          }, (error) => {
+            console.error(error);
+          });
+    }
   }
 
 }
