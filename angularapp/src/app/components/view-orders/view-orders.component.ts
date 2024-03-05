@@ -83,32 +83,7 @@ export class ViewOrdersComponent implements OnInit {
     // }, error => {
     //   console.error('Error:', error);
     // });
-    this.orderService.viewAllOrders().subscribe((response: any) => {
-      console.log(response);
-      if (response.$values && Array.isArray(response.$values)) {
-        this.orders = response.$values;
-      } else if (response.$values && typeof response.$values === 'object') {
-        this.orders = Object.values(response.$values);
-      } else {
-        this.orders = [];
-      }
+  //   
 
-      // Fetch the customer details for each order
-      this.orders.forEach((order: any) => {
-        this.customerService.viewCustomerById(order.customerId).subscribe((customer: any) => {
-          order.customer = customer; // Add the customer details to the order
-        });
-      });
-
-      console.log(this.orders);
-      if (!this.orders || this.orders.length === 0) {
-        this.message = 'No orders placed';
-      } else {
-        this.message = '';
-      }
-    }, error => {
-      console.error('Error:', error);
-    });
-  }
-  }
+  
   
