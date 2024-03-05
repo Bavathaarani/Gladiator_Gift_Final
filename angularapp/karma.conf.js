@@ -41,8 +41,7 @@ module.exports = function (config) {
       showPassed: true // Corrected the typo here
     },
     port: 9876,
-    // logLevel: config.LOG_INFO,
-    logLevel: config.LOG_DEBUG,
+    logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['CustomChromeHeadless'],
     customLaunchers: {

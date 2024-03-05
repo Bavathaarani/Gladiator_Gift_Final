@@ -48,21 +48,7 @@ describe('GiftService', () => {
     expect(req.request.method).toBe('GET');
     expect(req.request.headers.get('Authorization')).toBeTruthy();
   });
-  
-  // fit('Frontend_should_update_a_gift_when_updateGift_is_called', () => {
-  //   const giftDetails = {
-  //     giftId: '1',
-  //     giftType: 'Updated Gift Name',
-  //     giftDetails: 'Gift Description',
-  //     giftImageUrl: 'Gift Image URL'
-  //   };
-  
-  //   (service as any).updateGift(giftDetails.giftId, giftDetails).subscribe();
-  //   const req = httpMock.expectOne(`${(service as any).apiUrl}/api/gift/${giftDetails.giftId}`);
-  //   expect(req.request.method).toBe('PUT');
-  //   expect(req.request.body).toEqual(giftDetails);
-  //   expect(req.request.headers.get('Authorization')).toBeTruthy();
-  // });
+
   
   fit('Frontend_should_delete_a_gift_when_deleteGift_is_called', () => {
     const giftId = 1;
